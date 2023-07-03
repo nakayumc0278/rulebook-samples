@@ -7,13 +7,11 @@
         limit: 10
 
   rules:
-    - name: shutdown
+    - name: debug
       condition: event.i == 3
       action:
-        shutdown:
-          delay: 0.125
-          message: Shutting down after 3 events
-
+        debug:
+          msg: "hogehogehogehogehogeogh"
     - name: Output a message
       condition: event.i > 0
       action:
