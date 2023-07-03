@@ -8,10 +8,13 @@
 
   rules:
     - name: Output a message
-      condition: event.i == 1
+      condition: event.i > 0
       action:
-        - debug:
-            msg: "Happy Automation!"
-        - shutdown:
-            delay: 0.125
-            message: Shutting down after 5 events
+        debug:
+          msg: "Happy Automation!"
+    - name: shutdown
+      condition: event.i == 3
+      action:
+        shutdown:
+          delay: 0.125
+          message: Shutting down after 3 events
