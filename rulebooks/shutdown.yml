@@ -1,0 +1,17 @@
+---
+- name: Testing event-driven automation
+  hosts: all
+
+  sources:
+    - ansible.eda.range:
+        limit: 10
+
+  rules:
+    - name: Output a message
+      condition: event.i == 1
+      action:
+        - debug:
+            msg: "Happy Automation!"
+        - shutdown:
+            delay: 0.125
+            message: Shutting down after 5 events
