@@ -1,0 +1,15 @@
+---
+- name: Testing event-driven automation
+  hosts: all
+
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+
+  rules:
+    - name: Output a message
+      condition: event.i == 1
+      action:
+        debug:
+          msg: "received a webhook"
